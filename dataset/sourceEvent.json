@@ -1,0 +1,54 @@
+{
+	"name": "sourceEvent",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "copy data",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_folder": {
+				"type": "string",
+				"defaultValue": "@dataset().p_folder"
+			},
+			"p_fileName": {
+				"type": "string",
+				"defaultValue": "@dataset().p_fileName"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().p_fileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().p_folder",
+					"type": "Expression"
+				},
+				"container": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "product",
+				"type": "String"
+			},
+			{
+				"name": "amount",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

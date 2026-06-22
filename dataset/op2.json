@@ -1,0 +1,46 @@
+{
+	"name": "op2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "copy data",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"folderop2": {
+				"type": "string",
+				"defaultValue": "op2"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().folderop2",
+					"type": "Expression"
+				},
+				"container": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "product",
+				"type": "String"
+			},
+			{
+				"name": "amount",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

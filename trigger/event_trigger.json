@@ -1,0 +1,29 @@
+{
+	"name": "event_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Eventpipeline",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"foldername": "@substring(triggerBody().folderPath, add(indexOf(triggerBody().folderPath, '/'), 1))\n",
+					"filepath": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/test/blobs/Input/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/33d0d524-3cf6-480e-a067-ba32d8a24aee/resourceGroups/TestEnvfortestsa/providers/Microsoft.Storage/storageAccounts/testsa23",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

@@ -1,0 +1,130 @@
+{
+	"name": "varaiable_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set value for FileName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Name",
+					"value": {
+						"value": "@replace(pipeline().parameters.FileName,'Sales','')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "time",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "time2",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ListofFiles",
+					"value": {
+						"value": "@pipeline().parameters.append",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable3",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Append variable1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "output",
+					"value": {
+						"value": "@variables('ListofFiles')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"FileName": {
+				"type": "string",
+				"defaultValue": "DailySales"
+			},
+			"append": {
+				"type": "string",
+				"defaultValue": "d"
+			}
+		},
+		"variables": {
+			"Name": {
+				"type": "String"
+			},
+			"time": {
+				"type": "String"
+			},
+			"time2": {
+				"type": "String"
+			},
+			"ListofFiles": {
+				"type": "Array",
+				"defaultValue": [
+					"a",
+					"b",
+					"c"
+				]
+			},
+			"output": {
+				"type": "Array"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-06-17T09:49:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,15 @@
+{
+	"name": "kiradadf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "bfab1f59-8b7d-4b2d-b8de-9fef65214a70",
+		"tenantId": "419e87ce-39e3-40e0-8ddd-76ebf21c266f"
+	}
+}
