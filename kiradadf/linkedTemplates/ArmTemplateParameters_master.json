@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "kiradadf"
+		},
+		"LS_DataLake_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_password": {
+			"value": ""
+		},
+		"copy data_connectionString": {
+			"value": ""
+		},
+		"LS_DataLake_properties_typeProperties_url": {
+			"value": "https://kiransa.dfs.core.windows.net/"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"value": "kiranginka.database.windows.net"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"value": "cloudDB"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"value": "kiranginka"
+		},
+		"event_trigger_properties_Eventpipeline_parameters_foldername": {
+			"value": "@substring(triggerBody().folderPath, add(indexOf(triggerBody().folderPath, '/'), 1))\n"
+		},
+		"event_trigger_properties_Eventpipeline_parameters_filepath": {
+			"value": "@triggerBody().fileName"
+		},
+		"event_trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/33d0d524-3cf6-480e-a067-ba32d8a24aee/resourceGroups/TestEnvfortestsa/providers/Microsoft.Storage/storageAccounts/testsa23"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
